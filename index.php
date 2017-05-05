@@ -41,6 +41,7 @@ if($postback === "wifename")
             "title":"Great. We\'re sending her the following VHS tape. You\'ve Chosen\n PIZZA BOY",
             "image_url":"http://cincobot.herokuapp.com/photos/pizzaboy.jpg",
             "buttons":[
+              {
                 "type":"postback",
                 "title":"THANKS",
                 "payload":"pizb"
@@ -65,7 +66,7 @@ $jsonData = '{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Great. I\'ve made the change. Your wife\'s new legal name is: TAARGÜS TAARGÜS/n Is this okay? ",
+        "text":"Great. I\'ve made the change. Your wife\'s new legal name is: \n TAARGÜS TAARGÜS \n Is this okay? ",
         "buttons":[
          {
             "type":"postback",
@@ -96,7 +97,7 @@ $jsonData = '{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Your name is/n'.$userinfo["first_name"].' TAARGÜS/n Is this correct? ",
+        "text":"Your name is \n'.$userinfo["first_name"].' TAARGÜS \n Is this correct? ",
         "buttons":[
          {
             "type":"postback",
@@ -153,7 +154,7 @@ $jsonData = '{
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Okay. I think you\'ve said TAARGÜS/nIS this correct?",
+        "text":"Okay. I think you\'ve said TAARGÜS is this correct?",
         "buttons":[
          {
             "type":"postback",
