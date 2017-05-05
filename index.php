@@ -196,7 +196,7 @@ $jsonData = '{
   }
 }';
 }
-else if($postback === "Boat_Yes")
+else if($postback === "Boat_YES")
 {
    $jsonData = '{
     "recipient":{
