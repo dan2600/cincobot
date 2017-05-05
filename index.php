@@ -36,12 +36,13 @@ else
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 $ch = curl_init($url);
 
+
 $jsonData = '{
     "recipient":{
         "id":"'.$sender.'"
     },
    "message":{
-  "text":"'.$text.'"
+  "text":"'.$text.' '.$sender.'"
 }
 }';
 $jsonDataEncoded = $jsonData;
