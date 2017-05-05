@@ -35,8 +35,7 @@ else
 {
 	$jsonData = '{
     "recipient":{
-        "id":'.$sender.'
-    },
+        "id":"'.$sender.'"},
    "message":{
     "attachment":{
       "type":"template",
