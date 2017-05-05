@@ -33,27 +33,27 @@ if($postback === "USER_DEFINED_PAYLOAD")
 }
 else
 {
-	$jsonData = "{
-    \"recipient\":{
-        \"id\":\"".$sender."\"
+	$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
       },
-   \"message\":{
-    \"attachment\":{
-      \"type\":\"template\",
-      \"payload\":{
-        \"template_type\":\"button\",
-        \"text\":\"Okay. I\m almost finished setting up your account.".$userinfo["first_name"]." ".$userinfo["last_name"]."But I have a few more questions.\",
-        \"buttons\":[
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Okay. I\'m almost finished setting up your account.'.$userinfo["first_name"].' '.$userinfo["last_name"].'But I have a few more questions.",
+        "buttons":[
          {
-            \"type\":\"postback\",
-            \"title\":\"NEXT\",
-            \"payload\":\"Next_NAME\"
+            "type":"postback",
+            "title":"NEXT",
+            "payload":"Next_NAME"
           }
         ]
       }
     }
   }
-}";
+}';
 }
 
 error_log(print_r($jsonData, true));
@@ -70,7 +70,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 if(!empty($input['entry'][0]['messaging'][0]['message']) || $input['entry'][0]['messaging'][0]['postback']){
     $result = curl_exec($ch);
 }
-error_log("yes", true);
+error_log(print_r($jsonData, true));
 
 ?>
 
