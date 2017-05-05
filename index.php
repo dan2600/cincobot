@@ -56,7 +56,7 @@ else
 }";
 }
 
-error_log(print_r($jsonData, true));
+error_log($jsonData, true);
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 $ch = curl_init($url);
