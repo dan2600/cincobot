@@ -25,9 +25,241 @@ $message = $input['entry'][0]['messaging'][0]['message']['text'];
 $userinfo = json_decode(file_get_contents('https://graph.facebook.com/v2.6/'.$sender.'?access_token='.$access_token), true);
 
 
+if($postback === "wifename")
+{
+   $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Great. We\'re sending her the following VHS tape. You\'ve Chosen\n PIZZA BOY",
+            "image_url":"http://cincobot.herokuapp.com/photos/pizzaboy.jpg",
+            "buttons":[
+                "type":"postback",
+                "title":"THANKS",
+                "payload":"pizb"
+              }       
+            ]      
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+
+else if($postback === "namec")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Great. I\'ve made the change. Your wife\'s new legal name is: TAARGÜS TAARGÜS/n Is this okay? ",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"YES",
+            "payload":"wifename"
+          },
+          {
+            "type":"postback",
+            "title":"NO THANKS",
+            "payload":"wifename"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
 
 
-if($postback === "Next_NAME")
+else if($postback === "fewmoret")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Your name is/n'.$userinfo["first_name"].' TAARGÜS/n Is this correct? ",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"YES",
+            "payload":"namec"
+          },
+          {
+            "type":"postback",
+            "title":"NO THANKS",
+            "payload":"namec"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+
+
+else if($postback === "Boat_named")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Just to make sure I\'ve gotten all the information correct, I\'m going to need you to confirm a few more things.",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"NEXT",
+            "payload":"fewmoret"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+
+
+else if($postback === "Boat_name")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Okay. I think you\'ve said TAARGÜS/nIS this correct?",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"YES",
+            "payload":"Boat_named"
+          },
+            {
+            "type":"postback",
+            "title":"NO THANKS",
+            "payload":"Boat_named"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+
+else if($postback === "Boat_Pick")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Okay. I think you\'ve chosen COMMERCIAL FISHING. Now I\'m going to need your boat\'s name",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"NEXT",
+            "payload":"Boat_name"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+else if($postback === "Boat_Yes")
+{
+   $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Okay. Let\'s move on. Is Your Boat a C-Class Licensed Boat or a Commercial Fishing Boat?",
+            "image_url":"http://cincobot.herokuapp.com/photos/boats.png",
+            "buttons":[
+              {
+                "type":"postback",
+                "title":"C-Class",
+                "payload":"Boat_Pick"
+              },
+               {
+                "type":"postback",
+                "title":"Fishing",
+                "payload":"Boat_Pick"
+              },
+               {
+                "type":"postback",
+                "title":"No Thanks",
+                "payload":"Boat_Pick"
+              }            
+            ]      
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+else if($postback === "Boat_Party")
+{
+$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Okay. I didn\'t get that. I think you chose BOAT. Is that right?",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"YES",
+            "payload":"Boat_YES"
+          }
+        ]
+      }
+    }
+  }
+}';
+}
+else if($postback === "Next_NAME")
 {
 	 $jsonData = '{
     "recipient":{
