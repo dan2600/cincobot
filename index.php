@@ -29,7 +29,7 @@ $userinfo = json_decode(file_get_contents('https://graph.facebook.com/v2.6/'.$se
 
 if($postback === "USER_DEFINED_PAYLOAD")
 {
-	$text = "yay";
+	$text = "yayi";
 }
 else
 {
