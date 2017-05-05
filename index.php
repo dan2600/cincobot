@@ -33,21 +33,34 @@ if($postback === "USER_DEFINED_PAYLOAD")
 }
 else
 {
-	$text = "nay";
+	$jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+    },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Okay. I\'m almost finished setting up your account.'.chr(10).$userinfo["first_name"].' '.$userinfo["last_name"].chr(10).'But I have a few more questions.",
+        "buttons":[
+         {
+            "type":"postback",
+            "title":"NEXT",
+            "payload":"Next_NAME"
+          }
+        ]
+      }
+    }
+  }
+}';
 }
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 $ch = curl_init($url);
 
 
-$jsonData = '{
-    "recipient":{
-        "id":"'.$sender.'"
-    },
-   "message":{
-  "text":"'.$text.' '.$sender.'"
-}
-}';
+
 $jsonDataEncoded = $jsonData;
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
