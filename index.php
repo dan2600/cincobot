@@ -14,15 +14,18 @@ if ($hub_verify_token === $verify_token) {
 }
 
 
-
 $input = json_decode(file_get_contents('php://input'), true);
-error_log(print_r($input, true));
+
 
  
 $sender = $input['entry'][0]['messaging'][0]['sender']['id'];
 $postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 $message = $input['entry'][0]['messaging'][0]['message']['text'];
-error_log($postback);
+
+$userinfo = json_decode(file_get_contents('https://graph.facebook.com/v2.6/'.$sender.'?access_token='.$access_token), true);
+error_log(print_r($userinfo, true));
+
+
 
 if($postback === "USER_DEFINED_PAYLOAD")
 {
