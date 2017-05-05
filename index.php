@@ -27,9 +27,44 @@ $userinfo = json_decode(file_get_contents('https://graph.facebook.com/v2.6/'.$se
 
 
 
-if($postback === "USER_DEFINED_PAYLOAD")
+if($postback === "Next_NAME")
 {
-	$text = "yayi";
+	 $jsonData = '{
+    "recipient":{
+        "id":"'.$sender.'"
+      },
+   "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Do You Live In a Hole or Boat?",
+            "image_url":"http://cincobot.herokuapp.com/photos/boathole.png",
+            "buttons":[
+              {
+                "type":"postback",
+                "title":"Hole",
+                "payload":"Boat_Party"
+              },
+               {
+                "type":"postback",
+                "title":"Boat",
+                "payload":"Boat_Party"
+              },
+               {
+                "type":"postback",
+                "title":"No Thanks",
+                "payload":"Boat_Party"
+              }            
+            ]      
+          }
+        ]
+      }
+    }
+  }
+}';
 }
 else
 {
@@ -42,7 +77,7 @@ else
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Okay. I\'m almost finished setting up your account. \n'.$userinfo["first_name"].' '.$userinfo["last_name"].'\n But I have a few more questions.",
+        "text":"Okay. I\'m almost finished setting up your account.\n'.$userinfo["first_name"].' '.$userinfo["last_name"].'\nBut I have a few more questions.",
         "buttons":[
          {
             "type":"postback",
