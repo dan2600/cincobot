@@ -42,7 +42,7 @@ else
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Okay. I\'m almost finished setting up your account.'.chr(10)..$userinfo["first_name"].' '.$userinfo["last_name"].'But I have a few more questions.",
+        "text":"Okay. I\'m almost finished setting up your account.'.chr(10).$userinfo["first_name"].' '.$userinfo["last_name"].'But I have a few more questions.",
         "buttons":[
          {
             "type":"postback",
