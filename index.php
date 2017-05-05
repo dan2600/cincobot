@@ -56,7 +56,7 @@ else
 }";
 }
 
-error_log($jsonData, true);
+error_log(print_r($jsonData, true));
 
 $url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$access_token;
 $ch = curl_init($url);
@@ -70,7 +70,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 if(!empty($input['entry'][0]['messaging'][0]['message']) || $input['entry'][0]['messaging'][0]['postback']){
     $result = curl_exec($ch);
 }
-error_log(print_r($result, true));
+error_log("yes", true);
 
 ?>
 
